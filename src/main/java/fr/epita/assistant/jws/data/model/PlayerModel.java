@@ -1,18 +1,19 @@
 package fr.epita.assistant.jws.data.model;
 
-import javax.enterprise.inject.Model;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+
+import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Model
+@Entity
+@Table(name = "Player")
 public class PlayerModel {
-    public Timestamp lastbomb;
-    public Timestamp lastmovement;
-    public int lives;
-    public String name;
-    public int posx;
-    public int posy;
-    public int position;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) public Long id;
+    public @Column(name = "lastbomb") Timestamp lastbomb;
+    public @Column(name = "lastmovement") Timestamp lastmovement;
+    public @Column(name = "lives") int lives;
+    public @Column(name = "name") String name;
+    public @Column(name = "posx") int posx;
+    public @Column(name = "posy") int posy;
+    public @Column(name = "position") int position;
 }

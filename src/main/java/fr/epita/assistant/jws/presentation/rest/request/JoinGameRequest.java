@@ -1,2 +1,4 @@
-package fr.epita.assistant.jws.presentation.rest.request;public class JoinGameRequest {
+package fr.epita.assistant.jws.presentation.rest.request;
+
+public class JoinGameRequest {
 }

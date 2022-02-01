@@ -1,2 +1,4 @@
-package fr.epita.assistant.jws.domain.service;public class PlayerService {
+package fr.epita.assistant.jws.domain.service;
+
+public class PlayerService {
 }

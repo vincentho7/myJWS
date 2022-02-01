@@ -1,2 +1,4 @@
-package fr.epita.assistant.jws.data.repository;public class PlayerRepository {
+package fr.epita.assistant.jws.data.repository;
+
+public class PlayerRepository {
 }

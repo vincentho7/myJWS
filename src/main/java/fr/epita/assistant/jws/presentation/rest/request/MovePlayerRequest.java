@@ -1,2 +1,5 @@
-package fr.epita.assistant.jws.presentation.rest.request;public class MovePlayerRequest {
+package fr.epita.assistant.jws.presentation.rest.request;
+
+public class MovePlayerRequest{
+
 }

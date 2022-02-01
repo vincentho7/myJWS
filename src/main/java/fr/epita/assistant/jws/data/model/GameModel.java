@@ -1,13 +1,13 @@
-package fr.epita.assistant.jws.presentation.data.model;
+package fr.epita.assistant.jws.data.model;
 
-import javax.enterprise.inject.Model;
+
+import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Model
+@Entity @Table(name = "GameModel")
 public class GameModel {
-    public Timestamp startTime;
-    public int id;
-    public int player;
-    public String state;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) public Long id;
+    public @Column(name="starttime") Timestamp startTime;
+    public @Column(name="state") String state;
 
 }

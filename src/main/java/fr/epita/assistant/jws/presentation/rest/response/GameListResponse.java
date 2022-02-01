@@ -1,2 +1,4 @@
-package fr.epita.assistant.jws.presentation.rest.response;public class GameListResponse {
+package fr.epita.assistant.jws.presentation.rest.response;
+
+public class GameListResponse {
 }
