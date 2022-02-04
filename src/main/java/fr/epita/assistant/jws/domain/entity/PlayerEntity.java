@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.With;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 @With @NoArgsConstructor @AllArgsConstructor
 public class PlayerEntity {

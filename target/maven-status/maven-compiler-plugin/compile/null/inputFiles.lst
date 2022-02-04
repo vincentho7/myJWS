@@ -10,9 +10,9 @@
 /afs/cri.epita.fr/user/v/vi/vincent.thong/u/JAVA/vincent.thong-jws-2024/src/main/java/fr/epita/assistant/jws/data/repository/PlayerRepository.java
 /afs/cri.epita.fr/user/v/vi/vincent.thong/u/JAVA/vincent.thong-jws-2024/src/main/java/fr/epita/assistant/jws/converter/GameEntitytoDetailResponse.java
 /afs/cri.epita.fr/user/v/vi/vincent.thong/u/JAVA/vincent.thong-jws-2024/src/main/java/fr/epita/assistant/jws/domain/service/GameService.java
-/afs/cri.epita.fr/user/v/vi/vincent.thong/u/JAVA/vincent.thong-jws-2024/src/main/java/fr/epita/assistant/jws/presentation/rest/GameResource.java
-/afs/cri.epita.fr/user/v/vi/vincent.thong/u/JAVA/vincent.thong-jws-2024/src/main/java/fr/epita/assistant/jws/presentation/rest/response/GameListResponse.java
-/afs/cri.epita.fr/user/v/vi/vincent.thong/u/JAVA/vincent.thong-jws-2024/src/main/java/fr/epita/assistant/jws/presentation/rest/request/PutBombRequest.java
 /afs/cri.epita.fr/user/v/vi/vincent.thong/u/JAVA/vincent.thong-jws-2024/src/main/java/fr/epita/assistant/jws/data/model/GameModel.java
+/afs/cri.epita.fr/user/v/vi/vincent.thong/u/JAVA/vincent.thong-jws-2024/src/main/java/fr/epita/assistant/jws/presentation/rest/request/PutBombRequest.java
+/afs/cri.epita.fr/user/v/vi/vincent.thong/u/JAVA/vincent.thong-jws-2024/src/main/java/fr/epita/assistant/jws/presentation/rest/response/GameListResponse.java
+/afs/cri.epita.fr/user/v/vi/vincent.thong/u/JAVA/vincent.thong-jws-2024/src/main/java/fr/epita/assistant/jws/presentation/rest/GameResource.java
 /afs/cri.epita.fr/user/v/vi/vincent.thong/u/JAVA/vincent.thong-jws-2024/src/main/java/fr/epita/assistant/jws/presentation/rest/response/GameDetailResponse.java
 /afs/cri.epita.fr/user/v/vi/vincent.thong/u/JAVA/vincent.thong-jws-2024/src/main/java/fr/epita/assistant/jws/converter/GameModeltoEntity.java

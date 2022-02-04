@@ -3,8 +3,6 @@ package fr.epita.assistant.jws.converter;
 import fr.epita.assistant.jws.domain.entity.GameEntity;
 import fr.epita.assistant.jws.domain.entity.PlayerEntity;
 import fr.epita.assistant.jws.presentation.rest.response.GameDetailResponse;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.util.stream.Collectors;
 

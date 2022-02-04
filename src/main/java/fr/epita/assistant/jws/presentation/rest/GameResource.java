@@ -1,12 +1,8 @@
 package fr.epita.assistant.jws.presentation.rest;
 
 import fr.epita.assistant.jws.converter.GameEntitytoDetailResponse;
-import fr.epita.assistant.jws.data.model.GameModel;
-import fr.epita.assistant.jws.data.model.PlayerModel;
-import fr.epita.assistant.jws.domain.entity.GameEntity;
 import fr.epita.assistant.jws.domain.service.GameService;
 import fr.epita.assistant.jws.presentation.rest.request.CreateGameRequest;
-import fr.epita.assistant.jws.presentation.rest.response.GameDetailResponse;
 import fr.epita.assistant.jws.presentation.rest.response.GameListResponse;
 
 import javax.inject.Inject;
