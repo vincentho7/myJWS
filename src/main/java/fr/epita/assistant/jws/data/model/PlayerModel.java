@@ -2,18 +2,27 @@ package fr.epita.assistant.jws.data.model;
 
 
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.With;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Player")
+@Table(name = "player")
+@AllArgsConstructor
+@NoArgsConstructor
+@With
 public class PlayerModel {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) public Long id;
-    public @Column(name = "lastbomb") Timestamp lastbomb;
-    public @Column(name = "lastmovement") Timestamp lastmovement;
-    public @Column(name = "lives") int lives;
-    public @Column(name = "name") String name;
-    public @Column(name = "posx") int posx;
-    public @Column(name = "posy") int posy;
-    public @Column(name = "position") int position;
+    public LocalDateTime lastbomb;
+    public LocalDateTime lastmovement;
+    public int lives;
+    public String name;
+    public int posX;
+    public int posY;
+    public int position;
+    public @ManyToOne GameModel gameModel;
 }

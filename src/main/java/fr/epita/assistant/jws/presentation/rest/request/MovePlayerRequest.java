@@ -1,5 +1,12 @@
 package fr.epita.assistant.jws.presentation.rest.request;
 
-public class MovePlayerRequest{
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+
+public class MovePlayerRequest {
+    public int posX;
+    public int posY;
 }
