@@ -6,6 +6,7 @@ import fr.epita.assistant.jws.domain.entity.PlayerEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
@@ -16,19 +17,19 @@ public class GameModeltoEntity {
                 gameModel.id,
                 gameModel.players.stream().map(playerModel -> convertP(playerModel)).collect(Collectors.toList()),
                 gameModel.state,
-                new ArrayList<>(gameModel.map),
+                List.copyOf(gameModel.map),
                 gameModel.startTime);
     }
 
     public PlayerEntity convertP(PlayerModel playerModel){
         return new PlayerEntity(
-                playerModel.id, playerModel.lastbomb,
+                playerModel.id,
+                playerModel.lastbomb,
                 playerModel.lastmovement,
                 playerModel.lives,
                 playerModel.name,
                 playerModel.posX,
-                playerModel.posY,
-                playerModel.position,
-                playerModel.gameModel);
+                playerModel.posY
+                );
     }
 }

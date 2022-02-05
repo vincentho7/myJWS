@@ -2,6 +2,7 @@ package fr.epita.assistant.jws.data.model;
 import fr.epita.assistant.jws.utils.GameState;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.With;
 
 import javax.persistence.*;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @Entity @Table(name = "game")
 @AllArgsConstructor @NoArgsConstructor @With
-
+@ToString
 public class GameModel {
     public LocalDateTime startTime;
     public GameState state;

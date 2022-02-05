@@ -4,8 +4,10 @@ import fr.epita.assistant.jws.domain.entity.GameEntity;
 import fr.epita.assistant.jws.domain.entity.PlayerEntity;
 import fr.epita.assistant.jws.presentation.rest.response.GameDetailResponse;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.util.stream.Collectors;
 
+@ApplicationScoped
 public class GameEntitytoDetailResponse {
     public GameDetailResponse convertDTO(GameEntity gameEntity){
         return new GameDetailResponse(

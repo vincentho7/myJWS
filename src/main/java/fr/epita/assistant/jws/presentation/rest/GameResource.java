@@ -3,6 +3,7 @@ package fr.epita.assistant.jws.presentation.rest;
 import fr.epita.assistant.jws.converter.GameEntitytoDetailResponse;
 import fr.epita.assistant.jws.domain.service.GameService;
 import fr.epita.assistant.jws.presentation.rest.request.CreateGameRequest;
+import fr.epita.assistant.jws.presentation.rest.request.JoinGameRequest;
 import fr.epita.assistant.jws.presentation.rest.response.GameListResponse;
 
 import javax.inject.Inject;
@@ -31,11 +32,43 @@ public class GameResource {
         @Inject
         GameEntitytoDetailResponse converter;
         @POST @Path("/games")
-        public Response createGame(CreateGameRequest gameRequest){
+        public Response create(CreateGameRequest gameRequest){
                 if(gameRequest == null || gameRequest.name == null){
-                        return Response.status(400).build();
+                        return Response.status(404).build();
                 }
                 var gameCr = converter.convertDTO(gameService.createGame(gameRequest.name));
                 return Response.ok(gameCr).build();
         }
+
+        @GET @Path("/games/{gamesId}")
+        public Response gameDetailbyId(@PathParam("gamesId") Long id){
+                var entity = gameService.getGamebyId(id);
+                if(entity == null || id == null)
+                        return Response.status(404).build();
+                var gameCr = converter.convertDTO(entity);
+                return Response.ok(gameCr).build();
+        }
+        @POST @Path("/games/{gamesId}")
+        public Response joinGame(@PathParam("gamesId") Long id, JoinGameRequest joinRequest){
+                if(joinRequest == null || joinRequest.name == null || id == null){
+                        return Response.status(404).build();
+                }
+                var entity = gameService.joinGame(id, joinRequest.name);
+                if (entity == null)
+                        return Response.status(404).build();
+                var gameCr = converter.convertDTO(entity);
+                return Response.ok(gameCr).build();
+        }
+        @PATCH @Path("/games/{gameId}/start")
+        public Response startGame(@PathParam("gameId") Long id){
+                if(id == null){
+                        return Response.status(404).build();
+                }
+                var entity = gameService.startGame(id);
+                if(entity == null)
+                        return Response.status(404).build();
+                var gameCr = converter.convertDTO(entity);
+                return Response.ok(gameCr).build();
+        }
+
 }
