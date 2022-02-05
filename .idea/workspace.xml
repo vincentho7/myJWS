@@ -5,27 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dce5fd3-17ae-4fa7-996b-cb2b841240b2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f3c9ebb4-42f5-45b5-961c-17d0b4d39677.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f3c9ebb4-42f5-45b5-961c-17d0b4d39677.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f3c9ebb4-42f5-45b5-961c-17d0b4d39677/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f3c9ebb4-42f5-45b5-961c-17d0b4d39677/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/converter/GameEntitytoDetailResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/converter/GameEntitytoDetailResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/converter/GameModeltoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/converter/GameModeltoEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/data/model/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/data/model/GameModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/domain/entity/PlayerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/domain/entity/PlayerEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/domain/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/domain/service/GameService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/GameResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/GameResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/response/GameDetailResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/response/GameDetailResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/request/PutBombRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/request/PutBombRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/response/GameListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/response/GameListResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/converter/GameEntitytoDetailResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/converter/GameEntitytoDetailResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/converter/GameModeltoEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/converter/GameModeltoEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/data/model/GameModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/data/model/GameModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/domain/entity/PlayerEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/domain/entity/PlayerEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/response/Games.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/domain/service/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/domain/service/GameService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/GameResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/GameResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/response/GameDetailResponse$Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/response/GameDetailResponse$Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/response/GameDetailResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/response/GameDetailResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/request/PutBombRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/request/PutBombRequest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/response/GameListResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/response/GameListResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jws-dev.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/jws-dev.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/response/Games.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/jws-dev.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/quarkus/bootstrap/dev-app-model.dat" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +56,21 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  </component>
+  <component name="RunManager">
+    <configuration name="front-end.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/front-end.jar" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JAR Application.front-end.jar" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -75,7 +84,7 @@
       <workItem from="1644006598741" duration="1878000" />
       <workItem from="1644008820265" duration="14589000" />
       <workItem from="1644055024979" duration="421000" />
-      <workItem from="1644055463869" duration="8699000" />
+      <workItem from="1644055463869" duration="31388000" />
     </task>
     <servers />
   </component>

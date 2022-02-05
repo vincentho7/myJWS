@@ -4,7 +4,9 @@ import fr.epita.assistant.jws.converter.GameEntitytoDetailResponse;
 import fr.epita.assistant.jws.domain.service.GameService;
 import fr.epita.assistant.jws.presentation.rest.request.CreateGameRequest;
 import fr.epita.assistant.jws.presentation.rest.request.JoinGameRequest;
+import fr.epita.assistant.jws.presentation.rest.request.MovePlayerRequest;
 import fr.epita.assistant.jws.presentation.rest.response.GameListResponse;
+import fr.epita.assistant.jws.utils.GameState;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -66,6 +68,29 @@ public class GameResource {
                 }
                 var entity = gameService.startGame(id);
                 if(entity == null)
+                        return Response.status(404).build();
+                var gameCr = converter.convertDTO(entity);
+                return Response.ok(gameCr).build();
+        }
+
+        @POST @Path("/games/{gameId}/players/{playerID}/move")
+        public Response movePlayer(@PathParam("gameId") Long gameId, @PathParam("playerID") Long playerId, MovePlayerRequest movePlayerRequest){
+                if(playerId == null || gameId == null || movePlayerRequest == null){
+                        return Response.status(404).build();
+                }
+                var entity = gameService.movePlayer(gameId.longValue(), playerId.longValue(), movePlayerRequest);
+                if (entity == null)
+                        return Response.status(404).build();
+                var gameCr = converter.convertDTO(entity);
+                return Response.ok(gameCr).build();
+        }
+        @POST @Path("/games/{gameId}/players/{playerID}/bomb")
+        public Response putBomb(@PathParam("gameId") Long gameId, @PathParam("playerID") Long playerId, MovePlayerRequest movePlayerRequest){
+                if(playerId == null || gameId == null || movePlayerRequest == null){
+                        return Response.status(404).build();
+                }
+                var entity = gameService.putBomb(gameId.longValue(), playerId.longValue(), movePlayerRequest);
+                if (entity == null)
                         return Response.status(404).build();
                 var gameCr = converter.convertDTO(entity);
                 return Response.ok(gameCr).build();

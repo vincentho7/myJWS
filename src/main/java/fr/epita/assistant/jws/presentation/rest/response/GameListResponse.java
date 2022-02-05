@@ -10,11 +10,5 @@ import lombok.With;
 public class GameListResponse {
     public long id;
     public int players;
-    public GameState gameState;
-    /*
-    public GameListResponse(long id, int players, GameState gameState1) {
-        this.id = id;
-        this.players = players;
-        this.gameState1 = gameState1;
-    }*/
+    public GameState state;
 }
