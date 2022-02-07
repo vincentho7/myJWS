@@ -5,22 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dce5fd3-17ae-4fa7-996b-cb2b841240b2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/converter/GameEntitytoDetailResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/converter/GameEntitytoDetailResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/converter/GameModeltoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/converter/GameModeltoEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/domain/entity/PlayerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/domain/entity/PlayerEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/domain/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/domain/service/GameService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/GameResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/GameResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/request/PutBombRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/request/PutBombRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/response/GameListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/response/GameListResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/epita/assistant/jws/presentation/rest/response/Games.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/domain/service/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/domain/service/GameService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/GameResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/GameResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/request/PutBombRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/request/PutBombRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/response/GameListResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/response/GameListResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/epita/assistant/jws/presentation/rest/response/Games.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jws-dev.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/quarkus/bootstrap/dev-app-model.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/null/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/null/createdFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +46,7 @@
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -85,6 +78,7 @@
       <workItem from="1644008820265" duration="14589000" />
       <workItem from="1644055024979" duration="421000" />
       <workItem from="1644055463869" duration="32671000" />
+      <workItem from="1644256781301" duration="15021000" />
     </task>
     <servers />
   </component>
