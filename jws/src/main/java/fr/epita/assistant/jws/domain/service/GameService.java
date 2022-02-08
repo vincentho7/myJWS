@@ -108,9 +108,11 @@ public class GameService {
     @Transactional
     public GameEntity startGame(Long id) {
         var game = gameRepository.findById(id);
-        if (game == null)
+        if (game == null || game.state != GameState.STARTING)
             return null;
-        if(game.state == GameState.STARTING)
+        if(game.players.size() == 1)
+            game.state = GameState.FINISHED;
+        else
             game.state = GameState.RUNNING;
         return gameModeltoEntity.convert(game);
     }

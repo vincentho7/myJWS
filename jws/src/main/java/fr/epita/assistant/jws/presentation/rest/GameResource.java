@@ -72,7 +72,6 @@ public class GameResource {
                 return Response.ok(gameCr).build();
         }
 
-
         @PATCH @Path("/games/{gameId}/start")
         public Response startGame(@PathParam("gameId") Long id){
                 if(id == null){
