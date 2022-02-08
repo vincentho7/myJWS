@@ -8,8 +8,8 @@ fr/epita/assistant/jws/presentation/rest/request/JoinGameRequest.class
 fr/epita/assistant/jws/presentation/rest/request/MovePlayerRequest.class
 fr/epita/assistant/jws/presentation/rest/request/PutBombRequest.class
 fr/epita/assistant/jws/converter/GameModeltoEntity.class
-fr/epita/assistant/jws/presentation/rest/response/GameListResponse.class
 fr/epita/assistant/jws/converter/GameEntitytoDetailResponse.class
+fr/epita/assistant/jws/presentation/rest/response/GameListResponse.class
 fr/epita/assistant/jws/presentation/rest/GameResource.class
 META-INF/panache-archive.marker
 fr/epita/assistant/jws/data/model/PlayerModel.class

@@ -28,16 +28,20 @@ import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class GameService {
-    @ConfigProperty(name = "JWS_MAP_PATH")
+    @ConfigProperty(name = "JWS_MAP_PATH") String Path;
+    @Inject GameRepository gameRepository;
+    @Inject PlayerRepository playerRepository;
+    @Inject GameModeltoEntity gameModeltoEntity;
 
-    String Path;
-    @Inject
-    GameRepository gameRepository;
-    @Inject
-    PlayerRepository playerRepository;
-    @Inject
-    GameModeltoEntity gameModeltoEntity;
-    //@Inject GameEntitytoDetailResponse gameEntitytoDetailResponse;
+    @Transactional
+    public GameModel checkGame(Long gameId){
+        return gameRepository.findById(gameId.longValue());
+    }
+    @Transactional
+    public PlayerModel checkPlayer(Long playerId){
+        return playerRepository.findById(playerId.longValue());
+    }
+
     @Transactional
     public GameEntity getGamebyId(Long id) {
         var game = gameRepository.findById(id);
@@ -58,10 +62,10 @@ public class GameService {
             x = 15;
             y = 1;
         } else if (count == 2) {
-            x = 1;
+            x = 15;
             y = 13;
         } else if (count == 3) {
-            x = 15;
+            x = 1;
             y = 13;
         } else
             return gameModeltoEntity.convert(game);
@@ -89,6 +93,7 @@ public class GameService {
         return gamelist.stream().map(gameModel -> gameModeltoEntity.convert(gameModel)).collect(Collectors.toList());
     }
 
+    /*Read file imported by JWS path*/
     @Transactional
     public List<String> takefile(String fileName) {
         Path file = Paths.get(fileName);
@@ -110,6 +115,7 @@ public class GameService {
         return gameModeltoEntity.convert(game);
     }
 
+    /*Reencode  RLE dile*/
     public String encodeRLEString(String string) {
         var str = new StringBuilder();
         int len = string.length();
@@ -126,7 +132,7 @@ public class GameService {
         return str.toString();
     }
 
-    //for bomb
+    /*Decoding RLE Files*/
     public String decodeRLEString(String string) {
         var decodedFile = new StringBuilder();
         var file = new StringBuilder(string);
@@ -139,16 +145,7 @@ public class GameService {
         }
         return decodedFile.toString();
     }
-    //if doesn't exist return 404
-    @Transactional
-     public GameModel checkGame(Long gameId){
-         return gameRepository.findById(gameId.longValue());
-     }
-    @Transactional
-     public PlayerModel checkPlayer(Long playerId){
-         return playerRepository.findById(playerId.longValue());
-     }
-    //error 429
+
     @Transactional
      public Boolean checkMoveTick(PlayerModel player){
          var mv = player.lastmovement;

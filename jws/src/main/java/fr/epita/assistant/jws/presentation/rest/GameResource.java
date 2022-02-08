@@ -5,6 +5,7 @@ import fr.epita.assistant.jws.domain.service.GameService;
 import fr.epita.assistant.jws.presentation.rest.request.CreateGameRequest;
 import fr.epita.assistant.jws.presentation.rest.request.JoinGameRequest;
 import fr.epita.assistant.jws.presentation.rest.request.MovePlayerRequest;
+import fr.epita.assistant.jws.presentation.rest.request.PutBombRequest;
 import fr.epita.assistant.jws.presentation.rest.response.GameListResponse;
 import fr.epita.assistant.jws.utils.GameState;
 
@@ -53,15 +54,24 @@ public class GameResource {
         }
         @POST @Path("/games/{gamesId}")
         public Response joinGame(@PathParam("gamesId") Long id, JoinGameRequest joinRequest){
-                if(joinRequest == null || joinRequest.name == null || id == null){
+                if(joinRequest == null || joinRequest.name == null){
                         return Response.status(400).build();
                 }
-                var entity = gameService.joinGame(id, joinRequest.name);
-                if (entity == null)
+                //need to verify size, or game too many players
+                var gameModel = gameService.getGamebyId(id);
+
+                if (gameModel == null)
                         return Response.status(404).build();
+
+                if(gameModel.players.size() >= 4 || gameModel.state != GameState.STARTING)
+                        return Response.status(400).build();
+
+                var entity = gameService.joinGame(id, joinRequest.name);
+
                 var gameCr = converter.convertDTO(entity);
                 return Response.ok(gameCr).build();
         }
+
 
         @PATCH @Path("/games/{gameId}/start")
         public Response startGame(@PathParam("gameId") Long id){
@@ -103,15 +113,28 @@ public class GameResource {
         }
 
         @POST @Path("/games/{gameId}/players/{playerID}/bomb")
-        public Response putBomb(@PathParam("gameId") Long gameId, @PathParam("playerID") Long playerId, MovePlayerRequest movePlayerRequest){
-                if(playerId == null || gameId == null /*|| movePlayerRequest == null*/){
+        public Response putBomb(@PathParam("gameId") Long gameId, @PathParam("playerID") Long playerId, PutBombRequest putBombRequest){
+                if(playerId == null || gameId == null){
                         return Response.status(404).build();
                 }
-                var entity = gameService.putBomb(gameId.longValue(), playerId.longValue(), movePlayerRequest);
-                if (entity == null)
+                var gameModel = gameService.checkGame(gameId);
+                var playerModel = gameService.checkPlayer(playerId);
+
+                if(gameModel == null || playerModel == null)
+                {
+                        return Response.status(404).build();
+                }
+
+                if(putBombRequest == null || playerModel.name == null || gameModel.state != GameState.RUNNING || gameModel.players.size() > 4)
+                        return Response.status(400).build();
+
+                /*if (entity == null)
                         return Response.status(404).build();
                 var gameCr = converter.convertDTO(entity);
                 return Response.ok(gameCr).build();
+
+                 */
+                return null;
         }
 
 }
