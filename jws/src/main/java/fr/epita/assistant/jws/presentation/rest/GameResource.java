@@ -89,7 +89,6 @@ public class GameResource {
                 if(playerId == null || gameId == null || movePlayerRequest == null) {
                         return Response.status(404).build();
                 }
-
                 var gameModel = gameService.checkGame(gameId);
                 var playerModel = gameService.checkPlayer(playerId);
 
@@ -100,6 +99,7 @@ public class GameResource {
 
                 if(gameService.checkGameRunning(gameModel, playerModel))
                         return Response.status(400).build();
+
                 if(gameService.checkMoveTick(playerModel))
                         return Response.status(429).build();
 
@@ -124,16 +124,20 @@ public class GameResource {
                         return Response.status(404).build();
                 }
 
-                if(putBombRequest == null || playerModel.name == null || gameModel.state != GameState.RUNNING || gameModel.players.size() > 4)
+               if(putBombRequest == null || gameModel.state != GameState.RUNNING || playerModel.name == null)
+                       return Response.status(400).build();
+
+                if(playerModel.posX != putBombRequest.posX || playerModel.posY != putBombRequest.posY)
                         return Response.status(400).build();
 
-                /*if (entity == null)
+                if(gameService.delayBomb(playerId))
+                        return Response.status(429).build();
+                var entity = gameService.putBomb(gameId, playerId, putBombRequest);
+
+                if (entity == null)
                         return Response.status(404).build();
                 var gameCr = converter.convertDTO(entity);
                 return Response.ok(gameCr).build();
-
-                 */
-                return null;
         }
 
 }

@@ -10,6 +10,7 @@ import fr.epita.assistant.jws.domain.entity.GameEntity;
 
 
 import fr.epita.assistant.jws.presentation.rest.request.MovePlayerRequest;
+import fr.epita.assistant.jws.presentation.rest.request.PutBombRequest;
 import fr.epita.assistant.jws.utils.GameState;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
@@ -24,6 +25,8 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
@@ -33,6 +36,7 @@ public class GameService {
     @Inject PlayerRepository playerRepository;
     @Inject GameModeltoEntity gameModeltoEntity;
 
+    //Check Repository
     @Transactional
     public GameModel checkGame(Long gameId){
         return gameRepository.findById(gameId.longValue());
@@ -41,7 +45,7 @@ public class GameService {
     public PlayerModel checkPlayer(Long playerId){
         return playerRepository.findById(playerId.longValue());
     }
-
+    //get game by id
     @Transactional
     public GameEntity getGamebyId(Long id) {
         var game = gameRepository.findById(id);
@@ -120,17 +124,20 @@ public class GameService {
     /*Reencode  RLE dile*/
     public String encodeRLEString(String string) {
         var str = new StringBuilder();
-        int len = string.length();
+        int len = string.length() - 1;
         int count = 1;
         int j = 1;
-        for (j = 0; j < len - 1; j++) {
-            if (string.charAt(j) == string.charAt(j + 1)) {
+        for (j = 0; j < len; j++) {
+            if (string.charAt(j) == string.charAt(j + 1) && count < 9) {
                 count++;
             } else {
-                str.append(String.valueOf(count) + string.charAt(j));
+                str.append(String.valueOf(count));
+                str.append(string.charAt(j));
                 count = 1;
             }
         }
+        str.append(count);
+        str.append(string.charAt(j));
         return str.toString();
     }
 
@@ -182,7 +189,7 @@ public class GameService {
             return null;
     }
 
-    private boolean check_Map_Moves(List<String> mapList, MovePlayerRequest movePlayerRequest) { //put System print to test
+    private boolean check_Map_Moves(List<String> mapList, MovePlayerRequest movePlayerRequest) {
         var decodedlist = mapList.stream().map(e -> decodeRLEString(e)).collect(Collectors.toList());
         if((movePlayerRequest.posY >= decodedlist.size() || movePlayerRequest.posY <= 0))
             return false;
@@ -196,8 +203,106 @@ public class GameService {
     }
 
     @ConfigProperty(name = "JWS_DELAY_BOMB") int delayBomb;
-    @ConfigProperty(name = "JWS_DELAY_FREE") int delayFree;
-    public GameEntity putBomb(long longValue, long longValue1, MovePlayerRequest movePlayerRequest) {
-        return null;
+
+
+    @Transactional
+    public GameEntity putBomb(long gameId, long playerId, PutBombRequest putBombRequest) {
+        var gameModel = checkGame(gameId);
+        //var playerModel = checkPlayer(playerId);
+
+        if(gameModel == null)
+            return null;
+        var decodedMap = gameModel.map.stream().map((e->decodeRLEString(e))).collect(Collectors.toList());
+        var lineBomb = new StringBuilder(decodedMap.get(putBombRequest.posY));
+
+        lineBomb.setCharAt(putBombRequest.posX, 'B');
+        decodedMap.set(putBombRequest.posY, lineBomb.toString());
+
+        var reencodedMap = decodedMap.stream().map(this::encodeRLEString).collect(Collectors.toList());
+        gameModel.map=reencodedMap;
+        var e = CompletableFuture.delayedExecutor(ticks * delayBomb, TimeUnit.MILLISECONDS);
+        CompletableFuture.runAsync(()->{ explosion(playerId, gameId, putBombRequest);
+            },e);
+        return gameModeltoEntity.convert(gameModel);
+    }
+    @Transactional
+    public boolean delayBomb(long pLayerId){
+        var playerModel = checkPlayer(pLayerId);
+        var bomb = playerModel.lastbomb;
+        return (bomb != null && LocalDateTime.now().isBefore(bomb.plusNanos((long) delay * ticks * 1000000)));
+    }
+    @Transactional
+    public void explosion(long playerId, long gameId, PutBombRequest putBombRequest){
+        var playerModel = checkPlayer(playerId);
+        playerModel.lastbomb = LocalDateTime.now();
+        explode(gameId, playerId, putBombRequest);
+    }
+
+    @Transactional
+    private void checkGamePlayers(long gameId, PutBombRequest putBombRequest) {
+        var gameModel = checkGame(gameId);
+        int count = 0;
+        for(int i = 0; i < gameModel.players.size(); i++){
+            damagePlayer(gameModel.players.get(i).id, putBombRequest);
+        }
+        for (int i = 0; i < gameModel.players.size(); i++) {
+            if(gameModel.players.get(i).lives > 0){
+                   count++;
+            }
+        }
+        if (count <= 1){
+            gameModel.state = GameState.FINISHED;
+        }
+    }
+
+    @Transactional
+    public void damagePlayer(long playerId, PutBombRequest putBombRequest)
+    {
+        var playerModel = checkPlayer(playerId);
+        if (playerModel.posX == putBombRequest.posX + 1 || putBombRequest.posX - 1 == playerModel.posX
+                || playerModel.posY == putBombRequest.posY + 1 || playerModel.posY == putBombRequest.posY - 1)
+        {
+            playerModel.lives -= 1;
+        }
+        return;
+    }
+
+    @Transactional
+    public void explode(long gameId, long playerId, PutBombRequest putBombRequest){
+        //decodage
+
+        var gameModel = checkGame(gameId);
+        var decodedMap = gameModel.map.stream().map((this::decodeRLEString)).collect(Collectors.toList());
+
+        var upLine = new StringBuilder(decodedMap.get(putBombRequest.posY - 1));
+        var bombLine = new StringBuilder(decodedMap.get(putBombRequest.posY));
+        var downline = new StringBuilder(decodedMap.get(putBombRequest.posY + 1));
+
+        if(bombLine.charAt(putBombRequest.posX) == 'B')
+            bombLine.setCharAt(putBombRequest.posX, 'G');
+
+        if(bombLine.charAt(putBombRequest.posX + 1) == 'W')
+            bombLine.setCharAt(putBombRequest.posX + 1, 'G');
+
+        if(bombLine.charAt(putBombRequest.posX - 1) == 'W')
+            bombLine.setCharAt(putBombRequest.posX - 1, 'G');
+
+        decodedMap.set(putBombRequest.posY, bombLine.toString());
+
+        if(upLine.charAt(putBombRequest.posX) == 'W')
+        {
+            upLine.setCharAt(putBombRequest.posX, 'G');
+            decodedMap.set(putBombRequest.posY - 1, upLine.toString());
+        }
+        if(downline.charAt(putBombRequest.posX) == 'W'){
+            downline.setCharAt(putBombRequest.posX, 'G');
+            decodedMap.set(putBombRequest.posY + 1, downline.toString());
+        }
+        var stringList = decodedMap.stream().map(this::encodeRLEString).collect(Collectors.toList());
+
+        gameModel.map = stringList;
+        checkGamePlayers(gameId, putBombRequest);
+        return;
     }
 }
+
